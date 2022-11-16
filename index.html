@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ecouter la radio </title>
+        <!--Init Leaflet-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+        crossorigin=""/>
+            <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+            crossorigin=""></script>   
+    </head>
+    <body>
+        <p> Choisissez votre radio favorite - 
+        <select id="html_select_box">
+                <option disabled>Choose a radio</option> 
+                <option value="RTL2" selected>RTL2</option> 
+                <option value="France info">France info</option>
+                <option value="Sud Radio">Sud Radio</option>
+                <option value="Radio Classique">Radio Classique</option>
+                </br>
+        </select></p>
+
+        <audio id="radio_assets" preload="auto" autoplay="false" controls="controls" src="" unchecked></audio>
+        <label><input type="checkbox" checked="checked" id="autostart"> Autostart audio </label> 
+        <div id="map" style="height:500px; width:100%"></div>
+
+        <script src="radio.js" defer></script>
+    </body>
+</html>
