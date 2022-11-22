@@ -4,6 +4,7 @@ let checkbox_autostart = document.getElementById("autostart")
 let prev_station = "RTL2"
 let current_marker = null
 let auto_audio = false
+radio.volume = 0.2
 
 var map = L.map('map').setView([51.505, -0.09], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
