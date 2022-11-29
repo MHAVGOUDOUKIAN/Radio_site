@@ -1,0 +1,34 @@
+html, body{
+    height:0%;
+}
+
+#map {
+    z-index:0;
+}
+
+#welcome_banner {
+    position:relative;
+    z-index: 2;
+    opacity: 1.0;
+    transition: 150ms;
+}
+
+#transition_div {
+    z-index: 1;
+    height: 0%;
+    position: absolute;
+    transition: 500ms;
+}
+
+#core_section #footer{
+    z-index:0;
+    
+}
+
+#connexion_form {
+    position:absolute;
+    z-index: 2;
+    display: none;
+    transition: 600ms;
+    opacity: 0.0;
+}

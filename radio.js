@@ -1,6 +1,14 @@
 let radio = document.getElementById("radio_assets")
 let select_menu = document.getElementById("html_select_box")
 let checkbox_autostart = document.getElementById("autostart")
+let connexion_btn = document.getElementById("connexion_btn")
+let transition_div= document.getElementById("transition_div")
+let welcome_banner= document.getElementById("welcome_banner")
+let footer= document.getElementById("footer")
+let core_section= document.getElementById("core_section")
+let connexion_form= document.getElementById("connexion_form")
+let welcome_banner_section= document.getElementById("welcome_banner_section")
+
 let prev_station = "RTL2"
 let current_marker = null
 let auto_audio = false
@@ -45,11 +53,20 @@ select_menu.addEventListener('click',function() {
         prev_station = select_menu.value
 })
 
-checkbox_autostart.addEventListener("click", function() {
-    auto_audio = !auto_audio
-    console.log(auto_audio)
-    radio.setAttribute("autoplay", auto_audio.toString());
+connexion_btn.addEventListener('click',function() {
+    transition_div.style.height= "100%";
+    welcome_banner.style.opacity="0.0";
+    window.setTimeout(clear_index_page_section, 400);
 })
 
-
-
+function clear_index_page_section() {
+    clearTimeout();
+    connexion_form.style.display="inline-block";
+    core_section.style.display="none";
+    footer.style.display="none";
+    welcome_banner_section.style.display="none";
+    window.setTimeout(function(){
+        clearTimeout();
+        connexion_form.style.opacity="1.0";
+    }, 50);
+}
