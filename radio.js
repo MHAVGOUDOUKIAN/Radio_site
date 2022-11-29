@@ -1,13 +1,18 @@
 let radio = document.getElementById("radio_assets")
 let select_menu = document.getElementById("html_select_box")
-let checkbox_autostart = document.getElementById("autostart")
-let connexion_btn = document.getElementById("connexion_btn")
+
+
 let transition_div= document.getElementById("transition_div")
-let welcome_banner= document.getElementById("welcome_banner")
-let footer= document.getElementById("footer")
-let core_section= document.getElementById("core_section")
-let connexion_form= document.getElementById("connexion_form")
 let welcome_banner_section= document.getElementById("welcome_banner_section")
+let welcome_banner= document.getElementById("welcome_banner")
+let core_section= document.getElementById("core_section")
+let footer= document.getElementById("footer")
+
+let connexion_form= document.getElementById("connexion_form")
+let connexion_btn= document.getElementById("connexion_btn")
+let connexion_abort_btn=document.getElementById("connexion_abort_btn")
+let create_btn= document.getElementById("create_btn")
+let create_abort_btn=document.getElementById("create_abort_btn")
 
 let prev_station = "RTL2"
 let current_marker = null
@@ -53,20 +58,71 @@ select_menu.addEventListener('click',function() {
         prev_station = select_menu.value
 })
 
+/////////////////  Accessing connexion form /////////////
 connexion_btn.addEventListener('click',function() {
     transition_div.style.height= "100%";
     welcome_banner.style.opacity="0.0";
-    window.setTimeout(clear_index_page_section, 400);
+    window.setTimeout(function() {
+        clearTimeout();
+        connexion_form.style.display="inline-block";
+        core_section.style.display="none";
+        footer.style.display="none";
+        welcome_banner_section.style.display="none";
+        window.setTimeout(function(){
+            clearTimeout();
+            connexion_form.style.opacity="1.0";
+        }, 50);
+    }, 400);
 })
 
-function clear_index_page_section() {
-    clearTimeout();
-    connexion_form.style.display="inline-block";
-    core_section.style.display="none";
-    footer.style.display="none";
-    welcome_banner_section.style.display="none";
-    window.setTimeout(function(){
+/////////////////  Abort Connexion process /////////////
+connexion_abort_btn.addEventListener('click',function() {
+    connexion_form.style.opacity="0.0";
+    window.setTimeout(function() {
         clearTimeout();
-        connexion_form.style.opacity="1.0";
-    }, 50);
-}
+        connexion_form.style.display="none";
+        core_section.style.display="block";
+        footer.style.display="block";
+        welcome_banner_section.style.display="block";
+        
+        window.setTimeout(function(){
+            clearTimeout();
+            welcome_banner.style.opacity="1.0";
+            transition_div.style.height= "0%";
+        }, 50);
+    }, 400);
+})
+
+create_btn.addEventListener('click',function() {
+    transition_div.style.height= "100%";
+    welcome_banner.style.opacity="0.0";
+    window.setTimeout(function() {
+        clearTimeout();
+        connexion_form.style.display="inline-block";
+        core_section.style.display="none";
+        footer.style.display="none";
+        welcome_banner_section.style.display="none";
+        window.setTimeout(function(){
+            clearTimeout();
+            connexion_form.style.opacity="1.0";
+        }, 50);
+    }, 400);
+})
+
+/////////////////  Abort Connexion process /////////////
+create_abort_btn.addEventListener('click',function() {
+    connexion_form.style.opacity="0.0";
+    window.setTimeout(function() {
+        clearTimeout();
+        connexion_form.style.display="none";
+        core_section.style.display="block";
+        footer.style.display="block";
+        welcome_banner_section.style.display="block";
+        
+        window.setTimeout(function(){
+            clearTimeout();
+            welcome_banner.style.opacity="1.0";
+            transition_div.style.height= "0%";
+        }, 50);
+    }, 400);
+})
