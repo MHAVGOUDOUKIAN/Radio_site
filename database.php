@@ -1,10 +1,16 @@
 <?php
+$servername = "localhost";
+$username = "h19021074";
+$password = "eKGsdnf8BSb2Shy";
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-$mysqli = new mysqli("localhost", "h19021074", "eKGsdnf8BSb2Shy", "h19021074");
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=eKGsdnf8BSb2Shy", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
 
-echo $mysqli
+  $conn->query()
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
 
-$mysqli->query("DROP TABLE IF EXISTS test");
-
-?>
+?>  
