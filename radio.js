@@ -1,23 +1,26 @@
-let radio = document.getElementById("radio_assets")
-let select_menu = document.getElementById("html_select_box")
+// Section of the site
+let transition_div= document.getElementById("transition_div");
+let welcome_banner_section= document.getElementById("welcome_banner_section");
+let welcome_banner= document.getElementById("welcome_banner");
+let core_section= document.getElementById("core_section");
+let footer= document.getElementById("footer");
+let connexion_form= document.getElementById("connexion_form");
 
+// Object of the site
+let radio = document.getElementById("radio_assets");
+let select_menu = document.getElementById("html_select_box");
 
-let transition_div= document.getElementById("transition_div")
-let welcome_banner_section= document.getElementById("welcome_banner_section")
-let welcome_banner= document.getElementById("welcome_banner")
-let core_section= document.getElementById("core_section")
-let footer= document.getElementById("footer")
+// Validation button
+let open_login_form_btn= document.getElementById("open_login_form_btn");
+let login_btn= document.getElementById("login_btn");
+let login_abort_btn=document.getElementById("login_abort_btn");
+let create_account_btn= document.getElementById("create_account_btn");
+let create_account_abort_btn=document.getElementById("create_account_abort_btn");
 
-let connexion_form= document.getElementById("connexion_form")
-let connexion_btn= document.getElementById("connexion_btn")
-let connexion_abort_btn=document.getElementById("connexion_abort_btn")
-let create_btn= document.getElementById("create_btn")
-let create_abort_btn=document.getElementById("create_abort_btn")
-
-let prev_station = "RTL2"
-let current_marker = null
-let auto_audio = false
-radio.volume = 0.2
+let prev_station = "RTL2";
+let current_marker = null;
+let auto_audio = false;
+radio.volume = 0.2;
 
 var map = L.map('map').setView([51.505, -0.09], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -25,7 +28,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-select_menu.addEventListener('click',function() {
+/*select_menu.addEventListener('click',function() {
     if (select_menu.value != prev_station) 
         if (select_menu.value == "RTL2") {
             radio.setAttribute("src", "http://streaming.radio.rtl.fr/rtl-1-44-128"); 
@@ -56,10 +59,10 @@ select_menu.addEventListener('click',function() {
             map.setView([48.87653675275951, 2.3205542137869104], 19)
         }
         prev_station = select_menu.value
-})
+})*/
 
 /////////////////  Accessing connexion form /////////////
-connexion_btn.addEventListener('click',function() {
+open_login_form_btn.addEventListener('click',function() {
     transition_div.style.height= "100%";
     welcome_banner.style.opacity="0.0";
     window.setTimeout(function() {
@@ -76,7 +79,7 @@ connexion_btn.addEventListener('click',function() {
 })
 
 /////////////////  Abort Connexion process /////////////
-connexion_abort_btn.addEventListener('click',function() {
+login_abort_btn.addEventListener('click',function() {
     connexion_form.style.opacity="0.0";
     window.setTimeout(function() {
         clearTimeout();
@@ -93,7 +96,7 @@ connexion_abort_btn.addEventListener('click',function() {
     }, 400);
 })
 
-create_btn.addEventListener('click',function() {
+create_account_btn.addEventListener('click',function() {
     transition_div.style.height= "100%";
     welcome_banner.style.opacity="0.0";
     window.setTimeout(function() {
@@ -110,7 +113,7 @@ create_btn.addEventListener('click',function() {
 })
 
 /////////////////  Abort Connexion process /////////////
-create_abort_btn.addEventListener('click',function() {
+create_account_abort_btn.addEventListener('click',function() {
     connexion_form.style.opacity="0.0";
     window.setTimeout(function() {
         clearTimeout();
@@ -125,4 +128,4 @@ create_abort_btn.addEventListener('click',function() {
             transition_div.style.height= "0%";
         }, 50);
     }, 400);
-})
+})  
