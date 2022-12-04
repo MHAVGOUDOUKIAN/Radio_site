@@ -20,7 +20,8 @@
         if(isset($_POST['email_field']) && !empty($_POST['email_field']) &&
         isset($_POST['pass_field']) && !empty($_POST['pass_field'])) {
             $user_info = get_users($_POST['email_field'], $_POST['pass_field']);
-            if($user_info) {
+            $pass_is_valid = password_verify($_POST['pass_field'], $user_info['hash_pass']);
+            if($user_info && $pass_is_valid) {
                 $_SESSION['username'] = $user_info['name'];
                 $_SESSION['firstname'] = $user_info['surname'];
                 $_SESSION['email'] = $user_info['email'];

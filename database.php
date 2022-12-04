@@ -51,6 +51,13 @@ function add_radio($name, $url, $lat, $long, $owner_email) {
   $PDO->query($query);
 }
 
+function del_radio($name, $owner_email) {
+  $PDO = connect_to_db();
+
+  $query = "DELETE FROM radios WHERE name = '$name' AND own_by = '$owner_email'";
+  $PDO->query($query);
+}
+
 function get_radio_by_owner($owner_email) {
   $PDO = connect_to_db();
 

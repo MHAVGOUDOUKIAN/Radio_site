@@ -55,14 +55,25 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">Choisissez votre radio favorite</p>
-                            <select class="form-select" id="html_select_box" aria-label="Default select example">
-                                <option disabled>Choose a radio</option> 
-                                <?php  
-                                    require 'load_radio.php';
-                                ?>
-                            </select>
-                            <br>
-                            <audio id="radio_assets" preload="auto" autoplay="false" controls="controls" src="" unchecked></audio>
+                            <form method="post" action="remove_radio.php">
+                                <select name="radio_selection" class="form-select mb-2" id="html_select_box" aria-label="Default select example">
+                                    <option disabled>Choose a radio</option> 
+                                    <?php  
+                                        require 'load_radio.php';
+                                    ?>
+                                </select>
+                                <div class="container overflow-hidden">
+                                    <div class="row gy-5">
+                                        <div class="col-6">
+                                            <audio id="radio_assets" preload="auto" autoplay="false" controls="controls" src="" unchecked></audio>
+                                        </div>
+                                        <div class="col-1"></div>
+                                        <div class="col-5">
+                                            <?php if(is_logged()) { echo "<button type=\"submit\" name=\"del_radio_btn\" class=\"btn btn-danger\" >Supprimer cette radio</button>";}?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
