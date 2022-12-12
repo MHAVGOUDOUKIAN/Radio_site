@@ -65,3 +65,9 @@ function get_radio_by_owner($owner_email) {
   $res = $PDO->query($query, PDO::FETCH_ASSOC);
   return $res->fetchAll();
 }
+
+function add_timestamp($owner_email) {
+  $PDO = connect_to_db();
+  $query = "INSERT INTO login_historic (email, time_logged) VALUES ('$owner_email', current_timestamp);";
+  $res = $PDO->query($query, PDO::FETCH_ASSOC);
+}

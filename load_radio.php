@@ -3,19 +3,19 @@
     if(is_logged()) { // Load user's radios
         $all_radio = get_radio_by_owner($_SESSION['email']);
         for($i=0; $i< count($all_radio); ++$i) {
-            echo "<option value=\"".$all_radio[$i]['name']."\">".$all_radio[$i]['name']."</option>";
+            echo "<option value=\"".htmlspecialchars($all_radio[$i]['name'])."\">".htmlspecialchars($all_radio[$i]['name'])."</option>";
         }
         echo "<script> document.getElementById('html_select_box').addEventListener('click',function() {\n
                 if (select_menu.value != prev_station) {\n";
         for($i=0; $i< count($all_radio); ++$i) {
                 if($i > 0) { echo "else if"; }
                 else { echo "if"; }
-                echo " (select_menu.value == '".$all_radio[$i]['name']."') {
-                        radio.setAttribute('src', '".$all_radio[$i]['url']."');
+                echo " (select_menu.value == '".htmlspecialchars($all_radio[$i]['name'])."') {
+                        radio.setAttribute('src', '".htmlspecialchars($all_radio[$i]['url'])."');
                         if(current_marker != null) map.removeLayer(current_marker);
-                        current_marker = L.marker([".$all_radio[$i]['long'].", ".$all_radio[$i]['lat']."]).addTo(map);
-                        current_marker.bindPopup('".$all_radio[$i]['name']."').openPopup();
-                        map.setView([".$all_radio[$i]['long'].", ".$all_radio[$i]['lat']."], 19);
+                        current_marker = L.marker([".htmlspecialchars($all_radio[$i]['long']).", ".htmlspecialchars($all_radio[$i]['lat'])."]).addTo(map);
+                        current_marker.bindPopup('".htmlspecialchars($all_radio[$i]['name'])."').openPopup();
+                        map.setView([".htmlspecialchars($all_radio[$i]['long']).", ".htmlspecialchars($all_radio[$i]['lat'])."], 19);
                     }";
         }
         echo " prev_station = select_menu.value;

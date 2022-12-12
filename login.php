@@ -4,7 +4,6 @@
     
     init_session();
 
-    echo var_dump($_SESSION);
     echo var_dump($_POST);
 
     if(isset($_POST['create_account_btn']) && !is_logged()) {
@@ -25,6 +24,7 @@
                 $_SESSION['username'] = $user_info['name'];
                 $_SESSION['firstname'] = $user_info['surname'];
                 $_SESSION['email'] = $user_info['email'];
+                add_timestamp($_SESSION['email']);
             }
         }
     }

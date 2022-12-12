@@ -32,7 +32,7 @@
         <!--Banner Section-->
         <div id="welcome_banner_section" class="container-fluid text-center py-5 px-100 text-white bg-primary">
             <div id="welcome_banner" class="container">
-                <h2 class="fw-bold">Bienvenue <?php if(is_logged()) { echo $_SESSION['username']." ".$_SESSION['firstname']; } else { echo "sur \"Écouter votre Radio\"";} ?></h2>
+                <h2 class="fw-bold">Bienvenue <?php if(is_logged()) { echo htmlspecialchars($_SESSION['username']." ".$_SESSION['firstname']);  } else { echo "sur \"Écouter votre Radio\"";} ?></h2>
                 <p> Vous pouvez écouter, ajouter, et localiser toutes vos radios préférées, et tout ça au même endroit !</p>
                 <?php
                     if(is_logged()) {
